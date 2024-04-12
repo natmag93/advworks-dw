@@ -1,0 +1,10 @@
+version: 2
+
+seeds:
+  - name: stg_dim_date
+    description: A pre-built date dimension taken from https://github.com/jpseverance/DateAndTimeDimensionBuilders/blob/master/csvfiles/dimdate1850-2015.csv
+    columns:
+      - name: date_key
+        tests:
+          - unique
+          - not_null
