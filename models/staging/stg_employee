@@ -1,6 +1,0 @@
-select e.businessentityid as employee_id,
-       e.nationalidnumber as national_id_number,
-	   e.loginid as log_in_id,
-	   e.jobtitle as job_title,
-	   e.modifieddate as modified_data
-from humanresources.employee e
