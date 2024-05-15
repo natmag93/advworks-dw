@@ -29,7 +29,6 @@ select
     organization_node,
     employee_row_guid,
     employee_last_update,
-    title,
     first_name,
     middle_name,
     last_name,

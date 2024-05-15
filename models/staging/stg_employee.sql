@@ -6,7 +6,6 @@ select
     e.organizationnode as organization_node,
     e.rowguid as employee_row_guid,
     e.modifieddate as employee_last_update,
-    p.title,
     p.firstname as first_name,
     p.middlename as middle_name,
     p.lastname as last_name,
