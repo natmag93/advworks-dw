@@ -10,7 +10,6 @@ select
     p.firstname as first_name,
     p.middlename as middle_name,
     p.lastname as last_name,
-    p.suffix as suffix,
     p.rowguid as person_row_guid,
     p.modifieddate as person_last_update,
     GREATEST(e.modifieddate, p.modifieddate) as last_update
