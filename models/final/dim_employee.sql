@@ -1,5 +1,6 @@
 with first_version as (
     select
+        dbt_scd_id,
         employee_id,
         job_title,
         birth_date,
