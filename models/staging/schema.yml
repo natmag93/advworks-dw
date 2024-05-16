@@ -11,6 +11,11 @@ sources:
     schema: person
     tables:
       - name: person
+      - name: businessentity
+      - name: businessentityaddress
+      - name: address
+      - name: stateprovince
+      - name: countryregion
   - name: production
     schema: production
     tables:
@@ -21,6 +26,11 @@ sources:
     schema: purchasing
     tables:
       - name: shipmethod
+      - name: productvendor
+      - name: vendor
+      - name: purchaseorderdetail
+      - name: purchaseorderheader
+
 
 
 
@@ -46,3 +56,20 @@ models:
         tests:
           - unique
           - not_null            
+  - name: stg_vendor
+    columns:
+      - name: vendor_ID
+        description: "A unique identifier for the shipment company"
+        tests:
+          - unique
+          - not_null
+  - name: stg_purchasing
+    columns:
+      - name: purchasing_ID
+        description: "A unique identifier for the shipment company"
+        tests:
+          - unique
+          - not_null
+              
+              
+          
