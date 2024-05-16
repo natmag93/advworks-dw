@@ -17,6 +17,10 @@ sources:
       - name: product
       - name: productcategory
       - name: productsubcategory
+  - name: purchasing
+    schema: purchasing
+    tables:
+      - name: shipmethod
 
 
 
@@ -35,4 +39,10 @@ models:
         tests:
           - unique
           - not_null
-            
+  - name: stg_shipment
+    columns:
+      - name: shipment_ID
+        description: "A unique identifier for the shipment company"
+        tests:
+          - unique
+          - not_null            
