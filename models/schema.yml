@@ -11,10 +11,10 @@ sources:
     schema: person
     tables:
       - name: person
-
   - name: production
     schema: production
     tables:
+      - name: product
       - name: productcategory
       - name: productsubcategory
 
