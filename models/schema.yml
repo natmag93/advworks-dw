@@ -12,6 +12,14 @@ sources:
     tables:
       - name: person
 
+  - name: production
+    schema: production
+    tables:
+      - name: productcategory
+      - name: productsubcategory
+
+
+
 models:
   - name: stg_employee
     columns:
@@ -20,3 +28,11 @@ models:
         tests:
           - unique
           - not_null
+  - name: stg_product
+    columns:
+      - name: product_ID
+        description: "A unique identifier for the product"
+        tests:
+          - unique
+          - not_null
+            
