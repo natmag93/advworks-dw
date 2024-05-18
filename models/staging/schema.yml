@@ -16,7 +16,6 @@ sources:
       - name: address
       - name: stateprovince
       - name: countryregion
-      - name: personphone
       - name: emailaddress
   - name: production
     schema: production
@@ -54,8 +53,6 @@ models:
         description: "Date of birth"
       - name: gender
         description: "Gender"
-      - name: phone_number
-        description: "contact of employee"
       - name: email
         description: "email of employee"  
       - name: job_title
