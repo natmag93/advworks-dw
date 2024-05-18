@@ -16,6 +16,8 @@ sources:
       - name: address
       - name: stateprovince
       - name: countryregion
+      - name: personphone
+      - name: emailaddress
   - name: production
     schema: production
     tables:
