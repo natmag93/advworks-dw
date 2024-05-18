@@ -125,12 +125,12 @@ models:
         description: "country of vendor"
   - name: stg_purchasing
     columns:
-      - name: purchasing_ID
+      - name: purchasing_id
         description: "A unique identifier for the shipment company"
         tests:
           - unique
           - not_null
-      - name: vendor_ID
+      - name: vendor_id
         description: "A unique identifier for the vendor"
         tests:
           - unique
@@ -166,11 +166,11 @@ models:
         description: "Single product price"
       - name: product_total
         description: "Total price for product"
-      - name: subtotal
+      - name: order_subtotal
         description: "Purchase order subtotal."
       - name: tax_amount
         description: "Tax amount"
       - name: freight
         description: "Shipping cost"
-      - name: total_due
-        description: "Total due to vendor."
+      - name: order_total
+        description: "Total amount for order"
