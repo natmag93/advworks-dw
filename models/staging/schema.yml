@@ -42,6 +42,28 @@ models:
         tests:
           - unique
           - not_null
+      - name: job_title
+        description: "The job title of the employee"
+      - name: birth_date
+        description: "Date of birth"
+      - name: gender
+        description: "Gender"
+      - name: organization_node
+        description: "The building block from the organization"
+      - name: employee_row_guid
+        description: " number uniquely identifying the record"
+      - name: employee_last_update
+        description:	"Date and time the record was last updated"
+      - name: first_name
+        description: "employee first name"
+      - name: middle_name
+        description: "employee midle name"
+      - name: last_name
+        description: "employee last name"
+      - name: person_row_guid
+        description: "number uniquely identifying the record"
+      - name: person_last_update
+        description: "Date and time the record was last updated"
   - name: stg_product
     columns:
       - name: product_ID
@@ -49,13 +71,35 @@ models:
         tests:
           - unique
           - not_null
+      - name: product_name
+        description: "The name of the product"
+      - name: product_number
+        description: "The number of the product"
+      - name: category
+        description: "The category of the product"
+      - name: subcategory
+        description: "The subcategory of the product"
+      - name: color
+        description: " The color of the product"
+      - name: size
+        description:	"The size of the product"
+      - name: weight
+        description: "The weight of the product"
   - name: stg_shipment
     columns:
       - name: shipment_ID
         description: "A unique identifier for the shipment company"
         tests:
           - unique
-          - not_null            
+          - not_null      
+      - name: name
+        description: "The name of the shipment"
+      - name: min_ship_charge
+        description: "Minimum amount charged"
+      - name: pound_ship_charge
+        description: "Price per pound"
+      - name: modified_date
+        description: "Date of modification"      
   - name: stg_vendor
     columns:
       - name: vendor_ID
@@ -63,6 +107,20 @@ models:
         tests:
           - unique
           - not_null
+      - name: name
+        description: "The name of the vendor"
+      - name: account_number
+        description: "Number of the account"
+      - name: product_id
+        description: "Id of the product"
+      - name: standard_price
+        description: "Standard price of product"
+      - name: city
+        description: "city of vendor"
+      - name: state_province
+        description: "state province of vendor"
+      - name: country
+        description: "country of vendor"
   - name: stg_purchasing
     columns:
       - name: purchasing_ID
@@ -70,6 +128,47 @@ models:
         tests:
           - unique
           - not_null
-              
-              
-          
+      - name: vendor_ID
+        description: "A unique identifier for the vendor"
+        tests:
+          - unique
+          - not_null
+      - name: employee_id
+        description: "A unique identifier for the employee"
+        tests:
+          - unique
+          - not_null
+      - name: product_id
+        description: "A unique identifier for the product"
+        tests:
+          - unique
+          - not_null
+      - name: shipment_id
+        description: "A unique identifier for the shipment company"
+        tests:
+          - unique
+          - not_null
+      - name: order_date
+        description: "Date of order"
+      - name: ship_satus
+        description: "Shipment status"
+      - name: shipment_date
+        description: "Date of shipment"
+      - name: due_date
+        description: "Date the product is expected to be received."
+      - name: orderqty
+        description: "Order quantity"
+      - name: qty_received
+        description: "Received quantity"
+      - name: unit_price
+        description: "Single product price"
+      - name: product_total
+        description: "Total price for product"
+      - name: subtotal
+        description: "Purchase order subtotal."
+      - name: tax_amount
+        description: "Tax amount"
+      - name: freight
+        description: "Shipping cost"
+      - name: total_due
+        description: "Total due to vendor."
