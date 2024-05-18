@@ -1,9 +1,5 @@
 select distinct
 oh.purchaseorderid as purchase_id,
-v.businessentityid as vendor_id,
-e.businessentityid as employee_id,
-p.productid as product_id,
-sh.shipmethodid as shipment_id,
 DATE(oh.orderdate) as order_date,
 CASE
 	WHEN oh.status =1 THEN 'Pending'
@@ -22,9 +18,5 @@ ROUND(oh.taxamt,2) as tax_amount,
 ROUND(oh.freight,2) as freight,
 ROUND(nullif((oh.subtotal+oh.taxamt+oh.freight),(0)),2) as order_total
 from {{ source("purchasing", "purchaseorderheader") }} oh
-    left join {{ source("purchasing", "vendor") }} v on v.businessentityid=oh.vendorid
-    left join {{ source("humanresources", "employee") }} e on oh.employeeid= e.businessentityid
     left join {{ source("purchasing", "purchaseorderdetail") }} od on od.purchaseorderid=oh.purchaseorderid
-    left join {{ source("purchasing", "productvendor") }} p on p.productid= od.productid
-    left join {{ source("purchasing", "shipmethod") }} sh on sh.shipmethodid=oh.shipmethodid
 order by purchase_id
