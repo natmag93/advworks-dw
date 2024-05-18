@@ -16,7 +16,6 @@ sources:
       - name: address
       - name: stateprovince
       - name: countryregion
-      - name: personphone
       - name: emailaddress
   - name: production
     schema: production
@@ -44,31 +43,25 @@ models:
         tests:
           - unique
           - not_null
-      - name: job_title
-        description: "The job title of the employee"
-      - name: birth_date
-        description: "Date of birth"
-      - name: gender
-        description: "Gender"
-      - name: organization_node
-        description: "The building block from the organization"
-      - name: employee_row_guid
-        description: " number uniquely identifying the record"
-      - name: employee_last_update
-        description:	"Date and time the record was last updated"
       - name: first_name
         description: "employee first name"
       - name: middle_name
         description: "employee midle name"
       - name: last_name
         description: "employee last name"
-      - name: person_row_guid
-        description: "number uniquely identifying the record"
-      - name: person_last_update
-        description: "Date and time the record was last updated"
+      - name: birth_date
+        description: "Date of birth"
+      - name: gender
+        description: "Gender"
+      - name: email
+        description: "email of employee"  
+      - name: job_title
+        description: "The job title of the employee"
+      - name: organization_node
+        description: "The building block from the organization"
   - name: stg_product
     columns:
-      - name: product_ID
+      - name: product_id
         description: "A unique identifier for the product"
         tests:
           - unique
