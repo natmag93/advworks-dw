@@ -18,11 +18,12 @@ with dimension_ids as (
         purhd.freight,
         purhd.order_total
     from {{ ref('stg_purchasing_header') }} purhd
-        left join {{ ref('stg_vendor') }} v on pur.vendor_id=v.vendor_id
-        left join {{ ref('stg_employee') }} e on pur.employee_id= e.employee_id
-        left join {{ ref('stg_shipment') }} sh on pur.shipment_id=sh.shipment_id
-        left join {{ ref('stg_product') }} p on pur.product_id= p.product_id
-        left join {{ ref('stg_purchasing_detail') }} purdt on purhd.product_id= purdt.product_id
+        left join {{ ref('stg_vendor') }} v on purhd.vendor_id=v.vendor_id
+        left join {{ ref('stg_employee') }} e on purhd.employee_id= e.employee_id
+        left join {{ ref('stg_shipment') }} sh on purhd.shipment_id=sh.shipment_id
+        left join {{ ref('stg_purchasing_detail') }} purdt on purhd.purchase_id= purdt.purchase_id
+        left join {{ ref('stg_product') }} p on purdt.product_id= p.product_id
+        
 ),
 
 
@@ -34,7 +35,7 @@ surrogate_keys as (
         dprod.sk_product as sk_product,
         dship.sk_shipment as sk_shipment,
         order_dd.sk_date as sk_order_date,
-        ship_dd_sk_date as sk_shipment_date,
+        ship_dd.sk_date as sk_shipment_date,
         ship_status,
         due_date,
         orderqty,
@@ -49,13 +50,13 @@ surrogate_keys as (
         join {{ ref('dim_date') }} order_dd on dids.order_date = order_dd.date
         left join {{ ref('dim_date') }} ship_dd on dids.shipment_date = ship_dd.date
         join {{ ref('dim_vendor') }} dvend on dids.vendor_id = dvend.vendor_id
-            and dids.order_date between dcust.valid_from and dcust.valid_to
+            and dids.order_date between dvend.valid_from and dvend.valid_to
         left join {{ ref('dim_product') }} dprod on dids.product_id = dprod.product_id
             and dids.order_date between dprod.valid_from and dprod.valid_to
         left join {{ ref('dim_employee') }} demp on dids.employee_id = demp.employee_id
             and dids.order_date between demp.valid_from and demp.valid_to
         left join {{ ref('dim_shipment') }} dship on dids.shipment_id = dship.shipment_id
-            and dids.order_date between demp.valid_from and demp.valid_to
+            and dids.order_date between dship.valid_from and dship.valid_to
 ),
 
 
