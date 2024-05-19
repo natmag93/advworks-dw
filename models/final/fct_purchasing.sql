@@ -1,27 +1,28 @@
 with dimension_ids as (
     select
-        pur.purchase_id,
+        purhd.purchase_id,
         v.vendor_id,
         e.employee_id,
         p.product_id,
         sh.shipment_id,
-        pur.order_date,
-        pur.ship_status,
-        pur.shipment_date,
-        pur.due_date,
-        pur.orderqty,
-        pur.qty_received,
-        pur.unit_price,
-        pur.product_total,
-        pur.order_subtotal,
-        pur.tax_amount,
-        pur.freight,
-        pur.order_total
-    from {{ ref('stg_purchasing') }} pur
+        purhd.order_date,
+        purhd.ship_status,
+        purhd.shipment_date,
+        purdt.due_date,
+        purdt.orderqty,
+        purdt.qty_received,
+        purdt.unit_price,
+        purdt.product_total,
+        purhd.order_subtotal,
+        purhd.tax_amount,
+        purhd.freight,
+        purhd.order_total
+    from {{ ref('stg_purchasing_header') }} purhd
         left join {{ ref('stg_vendor') }} v on pur.vendor_id=v.vendor_id
         left join {{ ref('stg_employee') }} e on pur.employee_id= e.employee_id
         left join {{ ref('stg_shipment') }} sh on pur.shipment_id=sh.shipment_id
         left join {{ ref('stg_product') }} p on pur.product_id= p.product_id
+        left join {{ ref('stg_purchasing_detail') }} purdt on purhd.product_id= purdt.product_id
 ),
 
 
