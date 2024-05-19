@@ -1,5 +1,8 @@
 select distinct
 oh.purchaseorderid as purchase_id,
+oh.vendorid as vendor_id,
+oh.employeeid as employee_id,
+oh.shipmethodid as shipment_id,
 DATE(oh.orderdate) as order_date,
 CASE
 	WHEN oh.status =1 THEN 'Pending'
