@@ -1,5 +1,5 @@
 with dimension_ids as (
-    select
+    select distinct
         purhd.purchase_id,
         v.vendor_id,
         e.employee_id,
@@ -23,7 +23,7 @@ with dimension_ids as (
         left join {{ ref('stg_shipment') }} sh on purhd.shipment_id=sh.shipment_id
         left join {{ ref('stg_purchasing_detail') }} purdt on purhd.purchase_id= purdt.purchase_id
         left join {{ ref('stg_product') }} p on purdt.product_id= p.product_id
-        
+    order by purchase_id    
 ),
 
 
