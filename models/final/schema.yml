@@ -1,6 +1,59 @@
 version: 2
 
 models:
+  - name: fct_purchasing
+    description: Fact table for purchasing. Each record represents the state of a purchasing between the dates `valid_from` and `valid_to`.
+    columns:
+      - name: purchase_id
+        description: "A unique identifier for the shipment company"
+        tests:
+          - unique
+          - not_null
+      - name: sk_vendor
+        description: "A unique identifier for the vendor"
+        tests:
+          - unique
+          - not_null
+      - name: sk_employee
+        description: "A unique identifier for the employee"
+        tests:
+          - unique
+          - not_null
+      - name: sk_product
+        description: "A unique identifier for the product"
+        tests:
+          - unique
+          - not_null
+      - name: sk_shipment
+        description: "A unique identifier for the shipment company"
+        tests:
+          - unique
+          - not_null
+      - name: sk_order_date
+        description: "Date of order"
+      - name: sk_shipment_date
+        description: "Date of shipment"
+      - name: ship_satus
+        description: "Shipment status"
+      - name: due_date
+        description: "Date the product is expected to be received."
+      - name: orderqty
+        description: "Order quantity"
+      - name: qty_received
+        description: "Received quantity"
+      - name: unit_price
+        description: "Single product price"
+      - name: product_total
+        description: "Total price for product"
+      - name: order_subtotal
+        description: "Purchase order subtotal."
+      - name: tax_amount
+        description: "Tax amount"
+      - name: freight
+        description: "Shipping cost"
+      - name: order_total
+        description: "Total amount for order"
+        
   - name: dim_date
     description: Date dimension table
   - name: dim_employee
